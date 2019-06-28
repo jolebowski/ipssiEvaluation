@@ -1,0 +1,19 @@
+language: node_js
+before_script: 
+  - ./node_modules/.bin/jshint src
+  - ./node_modules/.bin/retire
+  - ./node_modules/.bin/twly if [ "$TRAVIS_BRANCH" = "master" ]; then "./node_modules/.bin/twly"; fi
+
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+script:
+  - npm start
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  github_token: $github_token
+  on:
+    branch: master
