@@ -1,17 +1,21 @@
 language: node_js
-before_script: 
-  - ./node_modules/.bin/jshint ./src 
-  - ./node_modules/.bin/retire
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then "./node_modules/.bin/twly"; fi
-
+before_script:
+- "./node_modules/.bin/jshint ./src"
+- "./node_modules/.bin/retire"
+- if [ "$TRAVIS_BRANCH" = "master" ]; then "./node_modules/.bin/twly"; fi
 node_js:
-  - "stable"
+- stable
 cache:
   directories:
   - node_modules
 script:
-  - npm start
+- npm start
 deploy:
   provider: heroku
   skip_cleanup: true
-  github_token: $github_token
+  github_token: "$github_token"
+  api_key:
+    secure: HTWPiK9bzucIG8Wmhx3mlGAfdVamJxs1Wh8lSriQkPs1rFggb5apInepGMzw1dapx0VeGMHSKPPT64JqQjbuZvuszrnhaeEZFX11SiSTbLoqYLr0PG0fYgzJG9OVfVbyzU0rTi+RBp1f+3VKxMg1D1l4fO+QqWL2CNa2rSeRuuaga+X7uh0wu3QppU1HCYEj2SQ4cY4DxgG1ylNmEQhCOCGmtEtdx47IQZrQ0XivXBQTLI0RnA9tZPr+FUrFVNijtMTB1z4y8FnNr+Ez5MTTYo9PHLFeTS1Xyz8BFPf0ws0O3W6clDOu9qOEwAuU22G0ygdk7i3a/aunduP4I17a/bcXquSUX/BGh/HD3o0pAgiYmWeXsb2YfdLzhNjmM54OTeFurr9JHWWhC6p1oQkaNTZWY7sqvcrYtfXPE7fgy75a6sFPbEfsAn8FOoD1xiChORC+RHyGsJhvOnVU0yVyf3HMUhvzGNhBZG5F3JCD41JcBlVg2WxKxruKAR3Zbd+MLnB4nCbI6S4yJP91kZTtTAohjY1tTLSKpglOOTqCsHlMKdFiZxXVAapTAr4b7NLT8MjCx1a/idJ8qUdWP4KIktekncN3zMJncrk8kj9SkITIS13C5n9qB2D9jra2RgVFI6iwwnzDmjBv2WtjzTsWkUY+ZgNvIcKsuek6MCtWeDY=
+  on: 
+    branch: dev 
+    repo: ipssiEvaluation
